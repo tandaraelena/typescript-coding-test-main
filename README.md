@@ -22,7 +22,7 @@ This application allows users to upload a PDF file and a company name, extracts 
 
 ```bash
 git clone https://github.com/tandaraelena/typescript-coding-test-main.git
-cd ts-upload
+cd typescript-coding-test-main
 ```
 
 2. Install the dependencies:
@@ -83,17 +83,15 @@ typescript-coding-test-main/
 ├── assets/ # Folder used to upload pdf files and removed after usage
 │
 ├── data/
-│ └── database.csv # CSV file containing the database data
+│   └── database.csv # CSV file containing the database data
 │
 ├── src/
-│ ├── **tests**/ # Tests for utility functions and API endpoints
-│ ├── utils/
-│ │ ├── index.ts # File which exports all utility functions
-│ │ ├── compareData.ts # Function to compare client data with company data
-│ │ ├── loadDbData.ts # Function which transforms the csv data from database
-│ │ └── pdf-service.ts # Mock PDF extraction service
-│ └── index.ts # Main server file
+│   ├── **tests**/ # Tests for utility functions and API endpoints
+│   ├── utils/ # Folder with utility functions
+│   └── index.ts # Main server file
 │
-├── test-docs/ # Folder which contains the pdf docs that can be uploaded in Postman and used for testing
+├── test-docs/ # Folder with pdf docs that can be used for testing
 │
 └── Other files..
+
+If you have any questions or feedback, feel free to reach me out.
