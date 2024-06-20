@@ -1,10 +1,10 @@
 import express from "express";
 import fileUpload, { UploadedFile } from "express-fileupload";
-import { CompanyPDFData, PdfService } from "./pdf-service";
+import { CompanyPDFData, PdfService } from "./utils/pdf-service";
 import fs from "fs";
 import path from "path";
 import cors from "cors";
-import { compareData, loadDbData } from "./util";
+import { compareData,loadDbData } from "./utils";
 
 const app = express();
 const port = process.env.PORT || 3000;

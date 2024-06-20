@@ -1,6 +1,4 @@
-import { createReadStream } from "fs";
 import { CompanyPDFData } from "./pdf-service";
-import csv from "csv-parser";
 
 // Function to compare extracted data with database data
 export const compareData: (
@@ -31,18 +29,4 @@ export const compareData: (
   return diff;
 };
 
-export const loadDbData = () => {
-  // Load database data once and store it in memory
-  let databaseData: Array<CompanyPDFData> = [];
 
-  createReadStream("data/database.csv")
-    .pipe(csv())
-    .on("data", (row) => {
-      databaseData.push(row);
-    })
-    .on("end", () => {
-      console.log("CSV file successfully processed");
-    });
-
-  return databaseData;
-};
