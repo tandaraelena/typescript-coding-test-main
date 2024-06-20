@@ -80,18 +80,18 @@ npm run test
 
 typescript-coding-test-main/
 │
-├── assets/ # Folder used to upload pdf files and removed after usage
+├── src/
+│   ├── index.ts          # Main server file
+│   └── utils/
+│       └── index.ts      # Utility functions exported
 │
 ├── data/
-│   └── database.csv # CSV file containing the database data
+│   └── database.csv      # CSV file containing the database data
 │
-├── src/
-│   ├── **tests**/ # Tests for utility functions and API endpoints
-│   ├── utils/ # Folder with utility functions
-│   └── index.ts # Main server file
-│
-├── test-docs/ # Folder with pdf docs that can be used for testing
+├── assets/
+│   └── sample.pdf        # PDF files uploaded and removed after usage
 │
 └── Other files..
+
 
 If you have any questions or feedback, feel free to reach me out.
