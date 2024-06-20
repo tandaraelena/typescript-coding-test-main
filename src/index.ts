@@ -69,11 +69,11 @@ app.post("/upload", async (req, res) => {
       const pdfService = new PdfService("TEST_KEY");
 
       // Extract data from the PDF
-      const extractedData: CompanyPDFData = await pdfService.extract(
+      const clientData: CompanyPDFData = await pdfService.extract(
         `assets/${pdfFile.name}`
       );
 
-      if (!extractedData) {
+      if (!clientData) {
         return res
           .status(404)
           .json({ error: "Cannot extract data. Invalid file provided." });
@@ -87,7 +87,7 @@ app.post("/upload", async (req, res) => {
       }
 
       // Compare the extracted data with the company data
-      const differences = compareData(extractedData, companyData);
+      const differences = compareData(clientData, companyData);
 
       // Clean up the uploaded file
       fs.unlink(pdfPath, (err) => {
