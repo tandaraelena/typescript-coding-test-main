@@ -1,47 +1,99 @@
-# Data discrepancy checker
+# PDF Uploader
 
-This task mirrors a system we recently built internally, and will give you an
-idea of the problems we need to solve.
+This application allows users to upload a PDF file and a company name, extracts data from the PDF, and compares it with existing database data to find differences.
 
-Every quarter, new company data is provided to us in PDF format. We need to use
-an external service to extract this data from the PDF, and then validate it
-against data we have on file from another source.
+## Table of Contents
 
-Complete the API so that:
-
-A user can provide a PDF and a company name data is extracted from the PDF via
-the external service and compared to the data stored on file a summary of the
-data is returned, containing all fields from both sources, noting which fields
-did not match.
-
-A selection of example PDFs have been uploaded, and the PDF
-extraction service has been mocked for use in `src/pdf-service.ts` - DO NOT
-EDIT THIS FILE. There is simple documentation of the service in
-`PDF_SERVICE_DOCS.md`. You can treat this as just another microservice.
-
-The existing data we have on file is available in the `data/database.csv` file.
-
-Treat this code as if it will be deployed to production, following best
-practices where possible.
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Testing](#testing)
+- [File Structure](#file-structure)
 
 ## Requirements
 
-- Node 18+
+- Node.js (version 18 or higher)
+- npm (Node Package Manager)
 
 ## Installation
 
-```bash
-$ npm i
-```
-
-## Run dev server
+1. Clone the repository:
 
 ```bash
-$ npm run dev
+git clone https://github.com/tandaraelena/typescript-coding-test-main.git
+cd ts-upload
 ```
 
-## Run tests
+2. Install the dependencies:
 
 ```bash
-$ npm run test
+npm install
 ```
+
+## Usage
+
+1. Run the development server:
+
+```bash
+npm run dev
+```
+
+2. The server will start at http://localhost:3000.
+
+3. Use a tool like Postman to interact with the API.
+
+## API Endpoints
+
+### POST /upload
+
+Endpoint to upload a PDF and provide a company name for comparison.
+
+- URL: /upload
+- Method: POST
+- Body:
+  `companyName`: The name of the company (type: text)
+  `pdf`: The PDF file to upload (type: file)
+- Response:
+  `200 OK`: Returns a JSON object with differences.
+  `400 Bad Request`: If no file is uploaded, no `companyName` has been provided or `companyName` is invalid.
+  `404 Not found`: No missing data.
+
+### Example Request with Postman
+
+1. Set the request method to POST and the URL to http://localhost:3000/upload.
+2. Select the `Body` tab and choose `form-data`.
+3. Add the following fields:
+
+- `companyName` (type: `text`)
+- `pdf` (type: `file`)
+
+## Testing
+
+To run the tests, use the following command:
+
+```bash
+npm run test
+```
+
+## File Structure
+
+typescript-coding-test-main/
+│
+├── assets/ # Folder used to upload pdf files and removed after usage
+│
+├── data/
+│ └── database.csv # CSV file containing the database data
+│
+├── src/
+│ ├── **tests**/ # Tests for utility functions and API endpoints
+│ ├── utils/
+│ │ ├── index.ts # File which exports all utility functions
+│ │ ├── compareData.ts # Function to compare client data with company data
+│ │ ├── loadDbData.ts # Function which transforms the csv data from database
+│ │ └── pdf-service.ts # Mock PDF extraction service
+│ └── index.ts # Main server file
+│
+├── test-docs/ # Folder which contains the pdf docs that can be uploaded in Postman and used for testing
+│
+└── Other files..
